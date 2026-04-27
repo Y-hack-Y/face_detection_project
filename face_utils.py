@@ -4,7 +4,7 @@ import database
 import os
 import requests
 
-CAMERA_URL = 'http://10.17.137.10'
+CAMERA_URL = 'http://192.168.120.10'
 
 face_cascade = None
 

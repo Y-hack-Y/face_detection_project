@@ -33,6 +33,14 @@ def init_db():
     ''')
     
     cursor.execute('''
+        CREATE TABLE IF NOT EXISTS blacklist (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            name TEXT NOT NULL UNIQUE,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        )
+    ''')
+    
+    cursor.execute('''
         CREATE TABLE IF NOT EXISTS detection_logs (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             user_id INTEGER,
@@ -144,6 +152,55 @@ def get_detection_logs(user_id=None, limit=50):
     conn.close()
     
     return [dict(log) for log in logs]
+
+def add_to_blacklist(name):
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    
+    try:
+        cursor.execute(
+            'INSERT INTO blacklist (name) VALUES (?)',
+            (name,)
+        )
+        conn.commit()
+        result = True
+    except sqlite3.IntegrityError:
+        result = False
+    finally:
+        conn.close()
+    
+    return result
+
+def remove_from_blacklist(name):
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    
+    cursor.execute('DELETE FROM blacklist WHERE name = ?', (name,))
+    conn.commit()
+    affected = cursor.rowcount
+    conn.close()
+    
+    return affected > 0
+
+def is_blacklisted(name):
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    
+    cursor.execute('SELECT 1 FROM blacklist WHERE name = ?', (name,))
+    result = cursor.fetchone()
+    conn.close()
+    
+    return result is not None
+
+def get_all_blacklist():
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    
+    cursor.execute('SELECT * FROM blacklist')
+    blacklist = cursor.fetchall()
+    conn.close()
+    
+    return [dict(item) for item in blacklist]
 
 if __name__ == '__main__':
     init_db()

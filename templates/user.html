@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,13 +11,13 @@
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             font-family: 'Microsoft YaHei', sans-serif;
             background: #f5f7fa;
             min-height: 100vh;
         }
-        
+
         .header {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
@@ -26,24 +27,24 @@
             align-items: center;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
-        
+
         .header h1 {
             font-size: 24px;
         }
-        
+
         .user-info {
             display: flex;
             align-items: center;
             gap: 15px;
         }
-        
+
         .user-badge {
             background: rgba(255, 255, 255, 0.2);
             padding: 8px 15px;
             border-radius: 20px;
             font-size: 14px;
         }
-        
+
         .logout-btn {
             background: rgba(255, 255, 255, 0.2);
             color: white;
@@ -54,17 +55,17 @@
             text-decoration: none;
             transition: background 0.3s;
         }
-        
+
         .logout-btn:hover {
             background: rgba(255, 255, 255, 0.3);
         }
-        
+
         .container {
             max-width: 1200px;
             margin: 30px auto;
             padding: 0 20px;
         }
-        
+
         .card {
             background: white;
             border-radius: 15px;
@@ -72,7 +73,7 @@
             padding: 30px;
             margin-bottom: 25px;
         }
-        
+
         .card-title {
             font-size: 18px;
             color: #333;
@@ -83,19 +84,19 @@
             align-items: center;
             gap: 10px;
         }
-        
+
         .card-title svg {
             width: 24px;
             height: 24px;
             fill: #667eea;
         }
-        
+
         .video-container {
             display: flex;
             gap: 25px;
             flex-wrap: wrap;
         }
-        
+
         .video-box {
             flex: 1;
             min-width: 300px;
@@ -105,14 +106,14 @@
             position: relative;
             aspect-ratio: 4/3;
         }
-        
+
         .video-box img,
         .video-box video {
             width: 100%;
             height: 100%;
             object-fit: contain;
         }
-        
+
         .video-label {
             position: absolute;
             top: 15px;
@@ -123,7 +124,7 @@
             border-radius: 6px;
             font-size: 13px;
         }
-        
+
         .placeholder {
             display: flex;
             flex-direction: column;
@@ -132,21 +133,21 @@
             height: 100%;
             color: #666;
         }
-        
+
         .placeholder svg {
             width: 60px;
             height: 60px;
             fill: #444;
             margin-bottom: 15px;
         }
-        
+
         .controls {
             display: flex;
             gap: 15px;
             margin-top: 25px;
             flex-wrap: wrap;
         }
-        
+
         .btn {
             padding: 14px 30px;
             border: none;
@@ -159,41 +160,41 @@
             align-items: center;
             gap: 8px;
         }
-        
+
         .btn svg {
             width: 20px;
             height: 20px;
         }
-        
+
         .btn-primary {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
         }
-        
+
         .btn-primary:hover {
             transform: translateY(-2px);
             box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
         }
-        
+
         .btn-secondary {
             background: #f0f0f0;
             color: #333;
         }
-        
+
         .btn-secondary:hover {
             background: #e0e0e0;
         }
-        
+
         .btn:disabled {
             opacity: 0.6;
             cursor: not-allowed;
             transform: none;
         }
-        
+
         .results {
             margin-top: 25px;
         }
-        
+
         .result-item {
             display: flex;
             justify-content: space-between;
@@ -203,12 +204,12 @@
             border-radius: 8px;
             margin-bottom: 10px;
         }
-        
+
         .result-name {
             font-weight: 600;
             color: #333;
         }
-        
+
         .result-confidence {
             background: #667eea;
             color: white;
@@ -216,21 +217,21 @@
             border-radius: 15px;
             font-size: 13px;
         }
-        
+
         .result-unknown {
             background: #ff6b6b;
         }
-        
+
         .loading {
             display: none;
             text-align: center;
             padding: 20px;
         }
-        
+
         .loading.show {
             display: block;
         }
-        
+
         .spinner {
             width: 40px;
             height: 40px;
@@ -240,11 +241,13 @@
             animation: spin 1s linear infinite;
             margin: 0 auto 15px;
         }
-        
+
         @keyframes spin {
-            to { transform: rotate(360deg); }
+            to {
+                transform: rotate(360deg);
+            }
         }
-        
+
         .status-bar {
             display: flex;
             align-items: center;
@@ -254,44 +257,123 @@
             border-radius: 8px;
             margin-bottom: 20px;
         }
-        
+
         .status-dot {
             width: 10px;
             height: 10px;
             border-radius: 50%;
             background: #28a745;
         }
-        
+
         .status-dot.offline {
             background: #dc3545;
         }
-        
+
         .history-list {
             max-height: 300px;
             overflow-y: auto;
         }
-        
+
         .history-item {
             display: flex;
             justify-content: space-between;
             padding: 12px 0;
             border-bottom: 1px solid #f0f0f0;
         }
-        
+
         .history-item:last-child {
             border-bottom: none;
         }
-        
+
         .history-name {
             font-weight: 500;
         }
-        
+
         .history-time {
             color: #999;
             font-size: 13px;
         }
+
+        .servo-status {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .servo-status-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #28a745;
+            animation: pulse 2s infinite;
+        }
+
+        .servo-status-dot.closed {
+            background: #dc3545;
+        }
+
+        .servo-status-dot.open {
+            background: #28a745;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+
+            50% {
+                transform: scale(1.2);
+                opacity: 0.7;
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .servo-status-text {
+            font-weight: 600;
+            font-size: 16px;
+            color: #333;
+        }
+
+        .servo-status-desc {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .servo-animation {
+            width: 100px;
+            height: 50px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 25px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .servo-door {
+            width: 40px;
+            height: 50px;
+            background: white;
+            position: absolute;
+            top: 0;
+            right: 0;
+            transition: right 1s ease-in-out;
+            border-radius: 0 25px 25px 0;
+        }
+
+        .servo-door.open {
+            right: 60px;
+        }
     </style>
 </head>
+
 <body>
     <header class="header">
         <h1>🔍 人脸检测系统</h1>
@@ -300,64 +382,93 @@
             <a href="/logout" class="logout-btn">退出登录</a>
         </div>
     </header>
-    
+
     <div class="container">
         <div class="card">
             <div class="card-title">
-                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg>
+                <svg viewBox="0 0 24 24">
+                    <path
+                        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z" />
+                </svg>
                 人脸检测
             </div>
-            
+
             <div class="status-bar">
                 <span class="status-dot" id="statusDot"></span>
                 <span id="statusText">摄像头状态检测中...</span>
             </div>
-            
+
+            <div class="servo-status" id="servoStatus">
+                <div class="servo-status-dot closed" id="servoStatusDot"></div>
+                <div>
+                    <div class="servo-status-text" id="servoStatusText">舵机状态: 关闭</div>
+                    <div class="servo-status-desc" id="servoStatusDesc">等待人脸识别...</div>
+                </div>
+                <div class="servo-animation">
+                    <div class="servo-door" id="servoDoor"></div>
+                </div>
+            </div>
+
             <div class="video-container">
                 <div class="video-box">
                     <span class="video-label">实时画面</span>
                     <img id="streamVideo" src="" alt="实时视频流" style="display:none;">
                     <div class="placeholder" id="streamPlaceholder">
-                        <svg viewBox="0 0 24 24"><path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z"/></svg>
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z" />
+                        </svg>
                         <span>点击下方按钮开始检测</span>
                     </div>
                 </div>
-                
+
                 <div class="video-box">
                     <span class="video-label">检测结果</span>
                     <img id="resultImage" src="" alt="检测结果" style="display:none;">
                     <div class="placeholder" id="resultPlaceholder">
-                        <svg viewBox="0 0 24 24"><path d="M21 3H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H3V5h18v14zM9 8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3zm6-1h6v2h-6V7zm0 4h6v2h-6v-2zm0 4h6v2h-6v-2z"/></svg>
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M21 3H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H3V5h18v14zM9 8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3zm6-1h6v2h-6V7zm0 4h6v2h-6v-2zm0 4h6v2h-6v-2z" />
+                        </svg>
                         <span>等待检测结果</span>
                     </div>
                 </div>
             </div>
-            
+
             <div class="controls">
                 <button class="btn btn-primary" id="detectBtn" onclick="startDetection()">
-                    <svg viewBox="0 0 24 24" fill="white"><path d="M9 13c1.66 0 3-1.34 3-3S10.66 7 9 7s-3 1.34-3 3 1.34 3 3 3zm0 2c-2.39 0-7 1.17-7 3.5V19c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-.5c0-2.33-4.61-3.5-7-3.5z"/></svg>
+                    <svg viewBox="0 0 24 24" fill="white">
+                        <path
+                            d="M9 13c1.66 0 3-1.34 3-3S10.66 7 9 7s-3 1.34-3 3 1.34 3 3 3zm0 2c-2.39 0-7 1.17-7 3.5V19c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-.5c0-2.33-4.61-3.5-7-3.5z" />
+                    </svg>
                     开始检测
                 </button>
                 <button class="btn btn-secondary" onclick="viewStream()">
-                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z"/></svg>
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z" />
+                    </svg>
                     查看实时视频流
                 </button>
             </div>
-            
+
             <div class="loading" id="loading">
                 <div class="spinner"></div>
                 <p>正在检测中，请稍候...</p>
             </div>
-            
+
             <div class="results" id="results" style="display:none;">
                 <h3 style="margin-bottom: 15px; color: #333;">检测结果</h3>
                 <div id="resultsList"></div>
             </div>
         </div>
-        
+
         <div class="card">
             <div class="card-title">
-                <svg viewBox="0 0 24 24"><path d="M13 3c-4.97 0-9 4.03-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42C8.27 19.99 10.51 21 13 21c4.97 0 9-4.03 9-9s-4.03-9-9-9zm-1 5v5l4.28 2.54.72-1.21-3.5-2.08V8H12z"/></svg>
+                <svg viewBox="0 0 24 24">
+                    <path
+                        d="M13 3c-4.97 0-9 4.03-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42C8.27 19.99 10.51 21 13 21c4.97 0 9-4.03 9-9s-4.03-9-9-9zm-1 5v5l4.28 2.54.72-1.21-3.5-2.08V8H12z" />
+                </svg>
                 检测历史
             </div>
             <div class="history-list" id="historyList">
@@ -365,10 +476,10 @@
             </div>
         </div>
     </div>
-    
+
     <script>
         let streamUrl = '';
-        
+
         async function init() {
             try {
                 const response = await fetch('/api/stream_url');
@@ -382,28 +493,49 @@
                 document.getElementById('statusDot').classList.add('offline');
                 document.getElementById('statusText').textContent = '摄像头未连接';
             }
-            
+
             loadHistory();
         }
-        
+
+        function updateServoStatus(isOpen) {
+            const statusDot = document.getElementById('servoStatusDot');
+            const statusText = document.getElementById('servoStatusText');
+            const statusDesc = document.getElementById('servoStatusDesc');
+            const servoDoor = document.getElementById('servoDoor');
+
+            if (isOpen) {
+                statusDot.classList.remove('closed');
+                statusDot.classList.add('open');
+                statusText.textContent = '舵机状态: 开启';
+                statusDesc.textContent = '门已打开，3秒后关闭';
+                servoDoor.classList.add('open');
+            } else {
+                statusDot.classList.remove('open');
+                statusDot.classList.add('closed');
+                statusText.textContent = '舵机状态: 关闭';
+                statusDesc.textContent = '等待人脸识别...';
+                servoDoor.classList.remove('open');
+            }
+        }
+
         async function startDetection() {
             const btn = document.getElementById('detectBtn');
             const loading = document.getElementById('loading');
             const results = document.getElementById('results');
-            
+
             btn.disabled = true;
             loading.classList.add('show');
             results.style.display = 'none';
-            
+
             try {
                 const response = await fetch('/api/detect', { method: 'POST' });
                 const data = await response.json();
-                
+
                 if (data.success) {
                     document.getElementById('resultImage').src = 'data:image/jpeg;base64,' + data.image;
                     document.getElementById('resultImage').style.display = 'block';
                     document.getElementById('resultPlaceholder').style.display = 'none';
-                    
+
                     if (data.faces.length > 0) {
                         const resultsList = document.getElementById('resultsList');
                         resultsList.innerHTML = data.faces.map(face => `
@@ -413,8 +545,20 @@
                             </div>
                         `).join('');
                         results.style.display = 'block';
+
+                        // Check if any recognized face (not unknown)
+                        const recognizedFaces = data.faces.filter(face => face.name !== '未知');
+                        if (recognizedFaces.length > 0) {
+                            // Open servo
+                            updateServoStatus(true);
+
+                            // Close servo after 3 seconds
+                            setTimeout(() => {
+                                updateServoStatus(false);
+                            }, 3000);
+                        }
                     }
-                    
+
                     loadHistory();
                 } else {
                     alert(data.message || '检测失败');
@@ -426,7 +570,7 @@
                 loading.classList.remove('show');
             }
         }
-        
+
         function viewStream() {
             if (streamUrl) {
                 document.getElementById('streamVideo').src = streamUrl;
@@ -436,12 +580,12 @@
                 alert('摄像头未连接');
             }
         }
-        
+
         async function loadHistory() {
             try {
                 const response = await fetch('/api/logs');
                 const data = await response.json();
-                
+
                 if (data.success && data.logs.length > 0) {
                     const historyList = document.getElementById('historyList');
                     historyList.innerHTML = data.logs.map(log => `
@@ -455,8 +599,9 @@
                 console.error('加载历史记录失败:', error);
             }
         }
-        
+
         init();
     </script>
 </body>
+
 </html>

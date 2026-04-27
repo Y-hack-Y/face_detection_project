@@ -3,6 +3,7 @@ from functools import wraps
 import database
 import face_utils
 import os
+import servo_controller
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key_here_change_in_production'
@@ -94,6 +95,10 @@ def detect():
                 name,
                 confidences[i]
             )
+            if not database.is_blacklisted(name):
+                servo_controller.trigger_servo()
+            else:
+                print(f"[舵机] {name} 在黑名单中，跳过触发")
     
     return jsonify({
         'success': True,
@@ -163,6 +168,40 @@ def get_stream_url():
         'success': True,
         'url': face_utils.get_camera_stream_url()
     })
+
+@app.route('/api/blacklist', methods=['GET'])
+@admin_required
+def get_blacklist():
+    blacklist = database.get_all_blacklist()
+    return jsonify({'success': True, 'blacklist': blacklist})
+
+@app.route('/api/blacklist/add', methods=['POST'])
+@admin_required
+def add_blacklist():
+    name = request.form.get('name')
+    
+    if not name:
+        return jsonify({'success': False, 'message': '请输入姓名'})
+    
+    success = database.add_to_blacklist(name)
+    if success:
+        return jsonify({'success': True, 'message': f'成功添加 {name} 到黑名单'})
+    else:
+        return jsonify({'success': False, 'message': f'{name} 已在黑名单中'})
+
+@app.route('/api/blacklist/remove', methods=['POST'])
+@admin_required
+def remove_blacklist():
+    name = request.form.get('name')
+    
+    if not name:
+        return jsonify({'success': False, 'message': '请输入姓名'})
+    
+    success = database.remove_from_blacklist(name)
+    if success:
+        return jsonify({'success': True, 'message': f'成功从黑名单中移除 {name}'})
+    else:
+        return jsonify({'success': False, 'message': f'{name} 不在黑名单中'})
 
 if __name__ == '__main__':
     database.init_db()
