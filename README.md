@@ -228,9 +228,7 @@ GET /api/blacklist/list
 本项目采用 MIT 许可证 - 详见 LICENSE 文件
 
 ## 👥 作者
-
-<<<<<<< HEAD
-- **项目作者** - [你的名字]
+- **项目作者** - [Y_hack_Y]
 =======
 
 ## 🙏 致谢
@@ -243,7 +241,7 @@ GET /api/blacklist/list
 
 如有问题或建议，请通过以下方式联系：
 - 提交 Issue
-- 发送邮件：your.email@example.com
+- 发送邮件：dreamcece6@gmail.com
 
 ## 📄 更新日志
 
