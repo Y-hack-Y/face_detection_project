@@ -201,8 +201,6 @@ POST /api/blacklist/remove
 GET /api/blacklist/list
 ```
 
-## 📸 界面截图
-
 ### 管理员界面
 - 人脸管理
 - 黑名单管理
